@@ -1,39 +1,37 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateTransfers1600391956805
-  implements MigrationInterface {
+export default class CriarContasPJ1603144764928 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'transferencias',
+        name: 'contas_pj',
         columns: [
           {
             name: 'id',
-            type: 'uuid',
+            type: 'number',
             isPrimary: true,
-            generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()',
           },
           {
-            name: 'origem',
-            type: 'varchar',
+            name: 'empresa_id',
+            type: 'uuid',
+            isUnique: true,
           },
           {
-            name: 'destino',
-            type: 'varchar',
-          },
-          {
-            name: 'valor',
+            name: 'saldo',
             type: 'float',
           },
           {
+            name: 'status',
+            type: 'boolean',
+          },
+          {
             name: 'created_at',
-            type: 'timestamp',
+            type: 'timestamp with time zone',
             default: 'now()',
           },
           {
             name: 'updated_at',
-            type: 'timestamp',
+            type: 'timestamp with time zone',
             default: 'now()',
           },
         ],
@@ -42,6 +40,6 @@ export default class CreateTransfers1600391956805
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('transferencias');
+    await queryRunner.dropTable('contas_pj');
   }
 }
