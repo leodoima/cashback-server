@@ -1,4 +1,4 @@
-import {
+/* import {
   MigrationInterface,
   QueryRunner,
   TableColumn,
@@ -43,3 +43,4 @@ export default class AlterSourceFieldToSourceId1600736623486
     );
   }
 }
+*/

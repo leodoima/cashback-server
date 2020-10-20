@@ -8,7 +8,7 @@ export default class CriarContasPJ1603144764928 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'number',
+            type: 'integer',
             isPrimary: true,
           },
           {

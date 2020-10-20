@@ -18,11 +18,6 @@ export default class CriarUsuarios1603144736596 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'cpf',
-            type: 'number',
-            isUnique: true,
-          },
-          {
             name: 'email',
             type: 'varchar',
             isUnique: true,
@@ -33,20 +28,22 @@ export default class CriarUsuarios1603144736596 implements MigrationInterface {
           },
           {
             name: 'telefone',
-            type: 'number',
+            type: 'integer',
+            isNullable: true,
           },
           {
             name: 'status',
             type: 'boolean',
+            default: true,
           },
           {
-            name: 'isEmpresa',
+            name: 'is_empresa',
             type: 'boolean',
             default: false,
           },
           {
-            name: 'conta',
-            type: 'number',
+            name: 'conta_id',
+            type: 'integer',
           },
           {
             name: 'created_at',

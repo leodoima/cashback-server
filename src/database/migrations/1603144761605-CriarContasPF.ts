@@ -8,7 +8,7 @@ export default class CriarContasPF1603144761605 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'number',
+            type: 'integer',
             isPrimary: true,
           },
           {
@@ -23,6 +23,7 @@ export default class CriarContasPF1603144761605 implements MigrationInterface {
           {
             name: 'status',
             type: 'boolean',
+            default: true,
           },
           {
             name: 'created_at',

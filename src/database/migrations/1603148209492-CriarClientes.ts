@@ -19,7 +19,7 @@ export default class CriarClientes1603148209492 implements MigrationInterface {
           },
           {
             name: 'cpf',
-            type: 'number',
+            type: 'integer',
             isUnique: true,
           },
           {
@@ -29,7 +29,7 @@ export default class CriarClientes1603148209492 implements MigrationInterface {
           },
           {
             name: 'telefone',
-            type: 'number',
+            type: 'integer',
           },
           {
             name: 'endereco',
