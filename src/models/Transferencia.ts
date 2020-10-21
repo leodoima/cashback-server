@@ -1,27 +1,27 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  PrimaryColumn,
 } from 'typeorm';
 
-@Entity('users')
-class User {
-  @PrimaryGeneratedColumn('uuid')
+@Entity('transferencias')
+class Transferencia {
+  @PrimaryColumn()
   id: string;
 
   @Column()
-  name: string;
+  conta_origem: string;
 
   @Column()
-  email: string;
+  conta_destino: string;
+
+  @Column('float')
+  valor: number;
 
   @Column()
-  password: string;
-
-  @Column()
-  avatar: string;
+  cashback: number;
 
   @CreateDateColumn()
   created_at: Date;
@@ -30,4 +30,4 @@ class User {
   updated_at: Date;
 }
 
-export default User;
+export default Transferencia;
