@@ -1,8 +1,17 @@
 import { Router } from 'express';
+import { getCustomRepository } from 'typeorm';
 
 import CriarEmpresaService from '../services/CriarEmpresaService';
+import EmpresasRepository from '../repositories/EmpresasRepository';
 
 const empresasRouter = Router();
+
+empresasRouter.get('/', async (request, response) => {
+  const empresasRepository = getCustomRepository(EmpresasRepository);
+  const empresas = await empresasRepository.find();
+
+  return response.json(empresas);
+});
 
 empresasRouter.post('/', async (request, response) => {
   const {

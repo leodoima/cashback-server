@@ -1,9 +1,9 @@
-import { getRepository } from 'typeorm';
+import { getCustomRepository } from 'typeorm';
 import { hash } from 'bcryptjs';
 
 import AppError from '../errors/AppEror';
 import Empresa from '../models/Empresas';
-import Cliente from '../models/Clientes';
+import EmpresasRepository from '../repositories/EmpresasRepository';
 
 interface Request {
   cnpj: string;
@@ -31,24 +31,14 @@ class CreateEmpresaService {
     password,
     cashback,
   }: Request): Promise<Empresa> {
-    const empresasRepository = getRepository(Empresa);
-    const clientesRepository = getRepository(Cliente);
+    const empresasRepository = getCustomRepository(EmpresasRepository);
+    const findEmpresaInUse = await empresasRepository.findByEmailOrCNPJ(
+      responsavel_email,
+      cnpj,
+    );
 
-    const checkEmpresaCNPJExists = await empresasRepository.find({
-      where: [{ cnpj }, { responsavel_email }],
-    });
-
-    if (checkEmpresaCNPJExists.length > 0) {
+    if (findEmpresaInUse) {
       throw new AppError('CNPJ ou e-mail já cadastrados');
-    }
-
-    // Fazendo checagem também com a tabela de clientes
-    const checkClienteEmailExists = await clientesRepository.findOne({
-      where: { email: responsavel_email },
-    });
-
-    if (checkClienteEmailExists) {
-      throw new AppError('E-mail cadastrado como cliente');
     }
 
     const hashedPassword = await hash(password, 8);

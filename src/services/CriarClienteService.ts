@@ -1,8 +1,9 @@
-import { getRepository } from 'typeorm';
 import { hash } from 'bcryptjs';
+import { getCustomRepository } from 'typeorm';
 
 import AppError from '../errors/AppEror';
 import Cliente from '../models/Clientes';
+import ClientesRepository from '../repositories/ClientesRepository';
 
 interface Request {
   nome: string;
@@ -22,22 +23,14 @@ class CreateClienteService {
     telefone,
     password,
   }: Request): Promise<Cliente> {
-    const clientesRepository = getRepository(Cliente);
+    const clientesRepository = getCustomRepository(ClientesRepository);
+    const findClienteInUse = await clientesRepository.findByEmailOrCPF(
+      email,
+      cpf,
+    );
 
-    const checkClienteEmailExists = await clientesRepository.findOne({
-      where: { email },
-    });
-
-    if (checkClienteEmailExists) {
-      throw new AppError('E-mail do cliente já cadastrado');
-    }
-
-    const checkClienteCPFExists = await clientesRepository.findOne({
-      where: { cpf },
-    });
-
-    if (checkClienteCPFExists) {
-      throw new AppError('CPF do cliente já cadastrado');
+    if (findClienteInUse) {
+      throw new AppError('Dados do cliente em uso');
     }
 
     const hashedPassword = await hash(password, 8);
