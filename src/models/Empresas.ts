@@ -12,7 +12,7 @@ class Empresa {
   id: string;
 
   @Column()
-  cnpj: number;
+  cnpj: string;
 
   @Column()
   nome_fantasia: string;
@@ -24,19 +24,19 @@ class Empresa {
   endereco: string;
 
   @Column()
-  telefone: number;
+  telefone: string;
 
   @Column()
   responsavel_nome: string;
 
   @Column()
-  responsavel_cpf: number;
+  responsavel_cpf: string;
 
   @Column()
   responsavel_email: string;
 
   @Column()
-  responsavel_telefone: number;
+  password: string;
 
   @Column()
   cashback: number;

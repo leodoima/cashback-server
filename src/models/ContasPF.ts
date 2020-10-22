@@ -8,19 +8,19 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import Empresa from './Empresa';
+import Cliente from './Clientes';
 
-@Entity('conta_pj')
-class ContaPJ {
+@Entity('contas_pf')
+class ContaPF {
   @PrimaryColumn()
   id: number;
 
   @Column()
-  empresa_id: number;
+  cliente_id: number;
 
-  @OneToOne(() => Empresa)
-  @JoinColumn({ name: 'empresa_id' })
-  empresa: Empresa;
+  @OneToOne(() => Cliente)
+  @JoinColumn({ name: 'cliente_id' })
+  cliente: Cliente;
 
   @Column('float')
   saldo: number;
@@ -35,4 +35,4 @@ class ContaPJ {
   updated_at: Date;
 }
 
-export default ContaPJ;
+export default ContaPF;

@@ -12,7 +12,7 @@ export default class CriarContasPF1603144761605 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: 'user_id',
+            name: 'cliente_id',
             type: 'uuid',
             isUnique: true,
           },

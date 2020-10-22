@@ -15,7 +15,7 @@ export default class CriarEmpresas1603144742352 implements MigrationInterface {
           },
           {
             name: 'cnpj',
-            type: 'integer',
+            type: 'varchar',
             isUnique: true,
           },
           {
@@ -32,7 +32,7 @@ export default class CriarEmpresas1603144742352 implements MigrationInterface {
           },
           {
             name: 'telefone',
-            type: 'integer',
+            type: 'varchar',
           },
           {
             name: 'responsavel_nome',
@@ -40,19 +40,19 @@ export default class CriarEmpresas1603144742352 implements MigrationInterface {
           },
           {
             name: 'responsavel_cpf',
-            type: 'integer',
+            type: 'varchar',
           },
           {
             name: 'responsavel_email',
             type: 'varchar',
           },
           {
-            name: 'responsavel_telefone',
-            type: 'integer',
+            name: 'password',
+            type: 'varchar',
           },
           {
             name: 'cashback',
-            type: 'float',
+            type: 'integer',
           },
           {
             name: 'status',

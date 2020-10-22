@@ -26,7 +26,7 @@ export default class CriarTransferencias1603144749929
           },
           {
             name: 'cashback',
-            type: 'float',
+            type: 'integer',
           },
           {
             name: 'created_at',

@@ -1,4 +1,5 @@
-import {
+"use strict";
+/* import {
   Entity,
   Column,
   CreateDateColumn,
@@ -8,9 +9,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import Usuario from './Usuario';
-
-@Entity('conta_pf')
+@Entity('individual_accounts')
 class ContaPF {
   @PrimaryColumn()
   id: number;
@@ -36,3 +35,4 @@ class ContaPF {
 }
 
 export default ContaPF;
+*/

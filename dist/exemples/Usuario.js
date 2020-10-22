@@ -1,4 +1,5 @@
-import {
+"use strict";
+/* import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
@@ -6,8 +7,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('clientes')
-class Cliente {
+@Entity('usuarios')
+class Usuario {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -15,19 +16,22 @@ class Cliente {
   nome: string;
 
   @Column()
-  cpf: number;
+  email: string;
 
   @Column()
-  email: string;
+  password: string;
 
   @Column()
   telefone: number;
 
   @Column()
-  endereco: string;
+  status: boolean;
 
   @Column()
-  status: boolean;
+  is_empresa: boolean;
+
+  @Column()
+  conta_id: number;
 
   @CreateDateColumn()
   created_at: Date;
@@ -36,4 +40,6 @@ class Cliente {
   updated_at: Date;
 }
 
-export default Cliente;
+export default Usuario;
+
+*/
