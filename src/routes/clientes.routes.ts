@@ -3,6 +3,7 @@ import { getCustomRepository } from 'typeorm';
 
 import ClientesRepository from '../repositories/ClientesRepository';
 import CriarClienteService from '../services/CriarClienteService';
+// import CriarContaPFService from '../services/CriarContaPFService';
 
 const clientesRouter = Router();
 
@@ -26,9 +27,9 @@ clientesRouter.post('/', async (request, response) => {
     password,
   });
 
-  // delete cliente.password;
+  delete cliente.password;
 
-  return response.json(cliente);
+  return response.json({ cliente });
 });
 
 export default clientesRouter;

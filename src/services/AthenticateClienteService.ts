@@ -2,7 +2,7 @@ import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
-import User from '../models/User';
+import Cliente from '../models/Clientes';
 import authConfig from '../config/auth';
 import AppError from '../errors/AppEror';
 
@@ -12,21 +12,23 @@ interface Request {
 }
 
 interface Response {
-  user: User;
+  cliente: Cliente;
   token: string;
 }
 
-class AuthenticateUserService {
+class AuthenticateClienteService {
   public async execute({ email, password }: Request): Promise<Response> {
-    const usersRepository = getRepository(User);
+    const usersRepository = getRepository(Cliente);
 
-    const user = await usersRepository.findOne({ where: { email } });
+    const cliente = await usersRepository.findOne({
+      where: { email, status: true },
+    });
 
-    if (!user) {
+    if (!cliente) {
       throw new AppError('E-mail ou senha inválidos', 401);
     }
 
-    const passwordMatched = await compare(password, user.password);
+    const passwordMatched = await compare(password, cliente.password);
 
     if (!passwordMatched) {
       throw new AppError('E-mail ou senha inválidos', 401);
@@ -35,15 +37,15 @@ class AuthenticateUserService {
     const { secret, expiresIn } = authConfig.jwt;
 
     const token = sign({}, secret, {
-      subject: user.id,
+      subject: cliente.id,
       expiresIn,
     });
 
     return {
-      user,
+      cliente,
       token,
     };
   }
 }
 
-export default AuthenticateUserService;
+export default AuthenticateClienteService;

@@ -16,7 +16,7 @@ class ContaPJ {
   id: number;
 
   @Column()
-  empresa_id: number;
+  empresa_id: string;
 
   @OneToOne(() => Empresa)
   @JoinColumn({ name: 'empresa_id' })

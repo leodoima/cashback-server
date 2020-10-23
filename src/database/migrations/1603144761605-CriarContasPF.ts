@@ -19,6 +19,7 @@ export default class CriarContasPF1603144761605 implements MigrationInterface {
           {
             name: 'saldo',
             type: 'float',
+            default: 0,
           },
           {
             name: 'status',

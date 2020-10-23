@@ -1,22 +1,27 @@
 import { Router } from 'express';
 
-import AuthenticateUserService from '../services/AthenticateUserService';
+import AuthenticateClienteService from '../services/AthenticateClienteService';
 
 const sessionsRouter = Router();
 
 sessionsRouter.post('/', async (request, response) => {
   const { email, password } = request.body;
 
-  const authenticateUser = new AuthenticateUserService();
+  const authenticateUserCliente = new AuthenticateClienteService();
 
-  const { user, token } = await authenticateUser.execute({
+  const { cliente, token } = await authenticateUserCliente.execute({
     email,
     password,
   });
 
-  delete user.password;
+  // Melhorar este tópico
+  delete cliente.password;
+  delete cliente.cpf;
+  delete cliente.endereco;
+  delete cliente.telefone;
+  delete cliente.status;
 
-  return response.json({ user, token });
+  return response.json({ cliente, token });
 });
 
 export default sessionsRouter;

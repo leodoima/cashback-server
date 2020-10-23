@@ -16,7 +16,7 @@ class ContaPF {
   id: number;
 
   @Column()
-  cliente_id: number;
+  cliente_id: string;
 
   @OneToOne(() => Cliente)
   @JoinColumn({ name: 'cliente_id' })

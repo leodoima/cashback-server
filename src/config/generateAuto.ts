@@ -17,3 +17,5 @@ export function generateCodeTransfers(): string {
   }
   return result;
 }
+
+export default { generateCodeCards, generateCodeTransfers };

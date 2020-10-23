@@ -19,6 +19,7 @@ export default class CriarContasPJ1603144764928 implements MigrationInterface {
           {
             name: 'saldo',
             type: 'float',
+            default: 0,
           },
           {
             name: 'status',
