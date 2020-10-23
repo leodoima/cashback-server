@@ -9,6 +9,14 @@
 	Em desenvolvimento...
 </h4>
 
+### Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [Expo](https://expo.io/)
+- [Node.js](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org/)
+
 ### Rodando o Back End (servidor)
 
 ```bash
