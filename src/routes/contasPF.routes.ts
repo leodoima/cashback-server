@@ -5,7 +5,6 @@ import AppError from '../errors/AppEror';
 import ContasPFRepository from '../repositories/ContasPFRepository';
 import CriarContasPFService from '../services/CriarContaPFService';
 import ClientesRepository from '../repositories/ClientesRepository';
-import Cliente from '../models/Clientes';
 
 const contasPFRouter = Router();
 
@@ -17,17 +16,14 @@ contasPFRouter.get('/', async (request, response) => {
 });
 
 contasPFRouter.post('/', async (request, response) => {
-  // const { id } = request.body;
-  // const contasPFRepository = getCustomRepository(ClientesRepository);
-  // const cliente = contasPFRepository.findOne({ where: id });
-  // if (!cliente) {
-  //   throw new AppError('Cliente não encontrado');
-  // }
-  // const createContasPF = new CriarContasPFService();
-  // const conta = await createContasPF.execute({
-  //   cliente,
-  // });
-  // return response.json({ 'ok' });
+  const { id } = request.body;
+
+  const createContasPF = new CriarContasPFService();
+  const conta = await createContasPF.execute({
+    id,
+  });
+
+  return response.json({ conta });
 });
 
 export default contasPFRouter;
