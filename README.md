@@ -2,7 +2,7 @@
 <p>Sistema de descontos e cashback em compras no comércio local</p>
 
 <h1 align="center">
-  <img alt="mova" title="#Mova - Cashback" src="./assets/banner.png" />
+  <img src="/assets/banner.PNG" />
 </h1>
 
 <h4 align="center"> 
