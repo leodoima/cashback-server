@@ -24,6 +24,7 @@ export default class CriarContasPJ1603144764928 implements MigrationInterface {
           {
             name: 'status',
             type: 'boolean',
+            default: true,
           },
           {
             name: 'created_at',

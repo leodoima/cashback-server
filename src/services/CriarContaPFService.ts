@@ -11,7 +11,7 @@ interface Request {
 }
 
 class CreateContaPFService {
-  public async execute(id: Request): Promise<ContasPF | null> {
+  public async execute(id: Request): Promise<ContasPF> {
     const clientesRepository = getCustomRepository(ClientesRepository);
     const cliente = await clientesRepository.findOne({ where: id });
 
@@ -21,7 +21,7 @@ class CreateContaPFService {
     });
 
     if (findContaExists) {
-      throw new AppError('Usuário possui conta');
+      throw new AppError('Usuário já possui conta');
     }
 
     const conta_card = generateAuto.generateCodeCards();
@@ -34,7 +34,7 @@ class CreateContaPFService {
 
     await contasPFRepository.save(contaPF);
 
-    return contaPF || null;
+    return contaPF;
   }
 }
 

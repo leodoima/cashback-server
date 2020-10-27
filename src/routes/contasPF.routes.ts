@@ -1,10 +1,8 @@
 import { Router } from 'express';
 import { getCustomRepository } from 'typeorm';
 
-import AppError from '../errors/AppEror';
 import ContasPFRepository from '../repositories/ContasPFRepository';
 import CriarContasPFService from '../services/CriarContaPFService';
-import ClientesRepository from '../repositories/ClientesRepository';
 
 const contasPFRouter = Router();
 

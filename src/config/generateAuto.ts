@@ -1,6 +1,6 @@
 export function generateCodeCards(): number {
-  const min = Math.ceil(100000);
-  const max = Math.floor(999999);
+  const min = Math.ceil(10000000);
+  const max = Math.floor(99999999);
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
