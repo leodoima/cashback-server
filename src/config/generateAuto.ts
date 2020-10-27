@@ -15,7 +15,8 @@ export function generateCodeTransfers(): string {
       Math.floor(Math.random() * randomChars.length),
     );
   }
-  return result;
+
+  return result.toUpperCase();
 }
 
 export default { generateCodeCards, generateCodeTransfers };

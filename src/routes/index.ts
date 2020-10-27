@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import transfersRouter from './transfers.routes';
+import transferenciasRouter from './transferencias.routes';
 import clientesRouter from './clientes.routes';
 import empresasRouter from './empresas.routes';
 import sessionsRouter from './sessions.routes';
@@ -9,7 +9,7 @@ import contaspjRouter from './contasPJ.routes';
 
 const routes = Router();
 
-routes.use('/transferencias', transfersRouter);
+routes.use('/transferencias', transferenciasRouter);
 routes.use('/clientes', clientesRouter); // Ok
 routes.use('/empresas', empresasRouter); // OK
 routes.use('/sessions', sessionsRouter); // Ok

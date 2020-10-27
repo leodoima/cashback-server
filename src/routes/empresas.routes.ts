@@ -42,7 +42,7 @@ empresasRouter.post('/', async (request, response) => {
     cashback,
   });
 
-  // delete cliente.password;
+  delete empresa.password;
 
   return response.json(empresa);
 });
