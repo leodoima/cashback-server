@@ -1,4 +1,4 @@
-import { getCustomRepository, Repository } from 'typeorm';
+import { getCustomRepository } from 'typeorm';
 
 import generateAuto from '../config/generateAuto';
 import AppError from '../errors/AppEror';
@@ -40,29 +40,26 @@ class CreateTransferenciaPJService {
     );
 
     const code_transferencia = generateAuto.generateCodeTransfers();
-    try {
-      const transferencia = transferenciaPJRepository.create({
-        id: code_transferencia,
-        empresa,
-        cliente,
-        valor,
-        cashback: empresa.cashback,
-      });
 
-      const valor_cashback = (valor * empresa.cashback) / 100;
+    const transferencia = transferenciaPJRepository.create({
+      id: code_transferencia,
+      empresa,
+      cliente,
+      valor,
+      cashback: empresa.cashback,
+    });
 
-      await transferenciaPJRepository.save(transferencia);
+    const valor_cashback = (valor * empresa.cashback) / 100;
 
-      const contaPJRepository = getCustomRepository(ContaPJRepository);
-      await contaPJRepository.alterarSaldo(empresa, valor_cashback);
+    await transferenciaPJRepository.save(transferencia);
 
-      const contaPFRepository = getCustomRepository(ContaPFRepository);
-      await contaPFRepository.alterarSaldo(cliente, valor_cashback);
+    const contaPJRepository = getCustomRepository(ContaPJRepository);
+    await contaPJRepository.alterarSaldo(empresa, valor_cashback);
 
-      return transferencia;
-    } catch (err) {
-      console.log(err);
-    }
+    const contaPFRepository = getCustomRepository(ContaPFRepository);
+    await contaPFRepository.alterarSaldo(cliente, valor_cashback);
+
+    return transferencia;
   }
 }
 
