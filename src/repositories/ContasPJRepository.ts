@@ -12,6 +12,26 @@ class ContaPJRepository extends Repository<ContaPJ> {
 
     return findContaPJ || null;
   }
+
+  public async alterarSaldo(
+    empresa: Empresas,
+    valor_cashback: number,
+  ): Promise<ContaPJ | null> {
+    const conta = await this.findOne({
+      where: { empresa },
+    });
+
+    if (!conta) {
+      return null;
+    }
+
+    const saldo = conta?.saldo - valor_cashback;
+    conta.saldo = saldo;
+
+    await this.save(conta);
+
+    return conta;
+  }
 }
 
 export default ContaPJRepository;

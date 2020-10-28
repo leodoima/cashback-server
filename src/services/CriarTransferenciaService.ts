@@ -37,6 +37,12 @@ class CreateTransferenciaService {
       cashback,
     });
 
+    // const queryRunner = connection.driver.createQueryRunner(); // queryRunner is a single real connection to the database obtained from a connection pool
+    // await queryRunner.startTransaction();
+    // // execute sql queries using queryRunner
+    // await queryRunner.commitTransaction(); // or .rollbackTransaction()
+    // await queryRunner.release(); // don't forget to release connection, very important!
+
     await transferenciasRepository.save(transferencia);
 
     return transferencia;
