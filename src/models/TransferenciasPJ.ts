@@ -8,8 +8,8 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import Empresa from './Empresas';
-import Cliente from './Clientes';
+import ContasPJ from './ContasPJ';
+import ContaPF from './ContasPF';
 
 @Entity('transferencias_pj')
 class TransferenciaPJ {
@@ -17,24 +17,27 @@ class TransferenciaPJ {
   id: string;
 
   @Column()
-  empresa_id: string;
+  contapj_id: number;
 
-  @OneToOne(() => Empresa)
-  @JoinColumn({ name: 'empresa_id' })
-  empresa: Empresa;
+  @OneToOne(() => ContasPJ)
+  @JoinColumn({ name: 'contapj_id' })
+  contapj: ContasPJ;
 
   @Column()
-  cliente_id: string;
+  contapf_id: number;
 
-  @OneToOne(() => Cliente)
-  @JoinColumn({ name: 'cliente_id' })
-  cliente: Cliente;
+  @OneToOne(() => ContaPF)
+  @JoinColumn({ name: 'contapf_id' })
+  contapf: ContaPF;
 
   @Column('float')
   valor: number;
 
   @Column()
   cashback: number;
+
+  @Column('float')
+  valor_cashback: number;
 
   @CreateDateColumn()
   created_at: Date;

@@ -7,9 +7,9 @@ export default class CriarChaveTransferenciasEmpresas1603837575556
       'transferencias_pj',
       new TableForeignKey({
         name: 'TransferenciaPJEmpresa',
-        columnNames: ['empresa_id'],
+        columnNames: ['contapj_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'empresas',
+        referencedTableName: 'contas_pj',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       }),
@@ -19,9 +19,9 @@ export default class CriarChaveTransferenciasEmpresas1603837575556
       'transferencias_pj',
       new TableForeignKey({
         name: 'TransferenciaPJCliente',
-        columnNames: ['cliente_id'],
+        columnNames: ['contapf_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'clientes',
+        referencedTableName: 'contas_pf',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       }),

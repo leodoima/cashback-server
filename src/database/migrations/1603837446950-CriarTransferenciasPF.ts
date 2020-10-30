@@ -13,15 +13,23 @@ export default class CriarTransferenciasPF1603837446950
             isPrimary: true,
           },
           {
-            name: 'cliente_id',
-            type: 'uuid',
+            name: 'contapf_id',
+            type: 'integer',
           },
           {
-            name: 'empresa_id',
-            type: 'uuid',
+            name: 'contapj_id',
+            type: 'integer',
           },
           {
             name: 'valor',
+            type: 'float',
+          },
+          {
+            name: 'cashback',
+            type: 'integer',
+          },
+          {
+            name: 'valor_cashback',
             type: 'float',
           },
           {

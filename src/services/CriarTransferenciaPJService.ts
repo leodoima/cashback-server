@@ -1,38 +1,46 @@
 import { getCustomRepository } from 'typeorm';
 
-import generateAuto from '../config/generateAuto';
 import AppError from '../errors/AppEror';
-import TransferenciaPJ from '../models/TransferenciasPJ';
-import ClienteRepository from '../repositories/ClientesRepository';
+import generateAuto from '../config/generateAuto';
 import EmpresaRepository from '../repositories/EmpresasRepository';
+import TransferenciaPJ from '../models/TransferenciasPJ';
 import ContaPFRepository from '../repositories/ContasPFRepository';
 import ContaPJRepository from '../repositories/ContasPJRepository';
 import TransferenciaPJRepository from '../repositories/TransferenciasPJRepository';
 
 interface Request {
-  empresa_id: string;
-  cliente_id: string;
+  contapj_id: number;
+  contapf_id: number;
   valor: number;
 }
 
 class CreateTransferenciaPJService {
   public async execute({
-    empresa_id,
-    cliente_id,
+    contapj_id,
+    contapf_id,
     valor,
   }: Request): Promise<TransferenciaPJ> {
-    const clienteRepository = getCustomRepository(ClienteRepository);
-    const cliente = await clienteRepository.findOne({
-      where: { id: cliente_id },
+    const contaPFRepository = getCustomRepository(ContaPFRepository);
+    const contapf = await contaPFRepository.findOne({
+      where: { id: contapf_id },
     });
+
+    const contaPJRepository = getCustomRepository(ContaPJRepository);
+    const contapj = await contaPJRepository.findOne({
+      where: { id: contapj_id },
+    });
+
+    if (!contapj || !contapf) {
+      throw new AppError('Dados inválidos, favor repetir a operação');
+    }
 
     const empresaRepository = getCustomRepository(EmpresaRepository);
     const empresa = await empresaRepository.findOne({
-      where: { id: empresa_id },
+      where: { id: contapj.empresa_id },
     });
 
-    if (!empresa || !cliente) {
-      throw new AppError('Dados inválidos, favor repetir a operação');
+    if (!empresa) {
+      throw new AppError('Erro ao acesso dados da empresa');
     }
 
     const transferenciaPJRepository = getCustomRepository(
@@ -41,23 +49,23 @@ class CreateTransferenciaPJService {
 
     const code_transferencia = generateAuto.generateCodeTransfers();
 
+    const valor_cashback = Number.parseFloat(
+      ((valor * empresa.cashback) / 100).toFixed(2),
+    );
+
+    await contaPJRepository.alterarSaldo(contapj, valor_cashback);
+    await contaPFRepository.alterarSaldo(contapf, valor_cashback);
+
     const transferencia = transferenciaPJRepository.create({
       id: code_transferencia,
-      empresa,
-      cliente,
+      contapj,
+      contapf,
       valor,
       cashback: empresa.cashback,
+      valor_cashback,
     });
 
-    const valor_cashback = (valor * empresa.cashback) / 100;
-
     await transferenciaPJRepository.save(transferencia);
-
-    const contaPJRepository = getCustomRepository(ContaPJRepository);
-    await contaPJRepository.alterarSaldo(empresa, valor_cashback);
-
-    const contaPFRepository = getCustomRepository(ContaPFRepository);
-    await contaPFRepository.alterarSaldo(cliente, valor_cashback);
 
     return transferencia;
   }

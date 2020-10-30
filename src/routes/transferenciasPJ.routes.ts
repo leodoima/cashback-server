@@ -17,12 +17,12 @@ const transferenciasPJRouter = Router();
 // });
 
 transferenciasPJRouter.post('/', async (request, response) => {
-  const { empresa_id, cliente_id, valor } = request.body;
+  const { contapj_id, contapf_id, valor } = request.body;
 
   const createTransferencia = new CriarTransferenciaPJService();
   const transferencia = await createTransferencia.execute({
-    empresa_id,
-    cliente_id,
+    contapj_id,
+    contapf_id,
     valor,
   });
 

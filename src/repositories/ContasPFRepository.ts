@@ -14,23 +14,21 @@ class ContaPFRepository extends Repository<ContaPF> {
   }
 
   public async alterarSaldo(
-    cliente: Clientes,
+    contaPF: ContaPF,
     valor_cashback: number,
   ): Promise<ContaPF | null> {
-    const conta = await this.findOne({
-      where: { cliente },
-    });
-
-    if (!conta) {
+    if (!contaPF) {
       return null;
     }
 
-    const saldo = conta?.saldo + valor_cashback;
-    conta.saldo = saldo;
+    const saldo = Number.parseFloat(
+      (contaPF.saldo + valor_cashback).toFixed(2),
+    );
+    contaPF.saldo = saldo;
 
-    await this.save(conta);
+    await this.save(contaPF);
 
-    return conta;
+    return contaPF;
   }
 }
 

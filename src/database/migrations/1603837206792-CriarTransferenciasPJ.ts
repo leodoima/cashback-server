@@ -13,12 +13,12 @@ export default class CriarTransferenciasPJ1603837206792
             isPrimary: true,
           },
           {
-            name: 'empresa_id',
-            type: 'uuid',
+            name: 'contapj_id',
+            type: 'integer',
           },
           {
-            name: 'cliente_id',
-            type: 'uuid',
+            name: 'contapf_id',
+            type: 'integer',
           },
           {
             name: 'valor',
@@ -27,6 +27,10 @@ export default class CriarTransferenciasPJ1603837206792
           {
             name: 'cashback',
             type: 'integer',
+          },
+          {
+            name: 'valor_cashback',
+            type: 'float',
           },
           {
             name: 'created_at',
