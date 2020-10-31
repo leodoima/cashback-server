@@ -9,6 +9,14 @@
 	Em desenvolvimento...
 </h4>
 
+### Sobre
+
+O desenvolvimento desta aplicação tem como objetivo colocar em prática os conhecimentos adquiridos no curso imersivo da Rockerseat, o GoStack Bootcamp.
+Nele pude ter o contato com as mais diversas tecnologias de desenvolvimento, as quais pretendo colocar em prática neste projeto real.
+
+A ideia surge da necessidade de se fomentar o consumo dentro do comércio local, ao qual acaba em muitas vezes perdendo espaço
+para comércios de cidades maiores. Assim, cria-se uma rede de beneficiamento coletivo, proporcionando ao cliente vantagens ao se consumir dentro da própria cidade.
+
 ### Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
