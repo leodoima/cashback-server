@@ -16,6 +16,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Expo](https://expo.io/)
 - [Node.js](https://nodejs.org/en/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [Docker](https://www.docker.com/)
+- [TypeORM](https://typeorm.io/)
 
 ### Rodando o Back End (servidor)
 
