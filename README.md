@@ -17,6 +17,9 @@ Nele pude ter o contato com as mais diversas tecnologias de desenvolvimento, as 
 A ideia surge da necessidade de se fomentar o consumo dentro do comércio local, ao qual acaba em muitas vezes perdendo espaço
 para comércios de cidades maiores. Assim, cria-se uma rede de beneficiamento coletivo, proporcionando ao cliente vantagens ao se consumir dentro da própria cidade.
 
+- [Back-end](https://github.com/leodoima/cashback-server)
+- [Front-end](https://github.com/leodoima/cashback-web)
+
 ### Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
@@ -27,9 +30,25 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Docker](https://www.docker.com/)
 - [TypeORM](https://typeorm.io/)
 
-### Rodando o Back End (servidor)
+### Rodando aplicação
 
 ```bash
+# Clone do repositório back-frontend
+$ git clone https://github.com/leodoima/cashback-web.git
+
+# Acesse a pasta do projeto
+$ cd cashback-web
+
+# Instale as dependências
+$ yarn
+
+# Execute a aplicação
+$ yarn start
+
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+
+
+
 # Clone do repositório
 $ git clone https://github.com/leodoima/cashback-server.git
 
@@ -37,7 +56,7 @@ $ git clone https://github.com/leodoima/cashback-server.git
 $ cd cashback-server
 
 # Instale as dependências
-$ yarn start
+$ yarn
 
 # Execute a aplicação
 $ yarn dev:server
